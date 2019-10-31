@@ -1,10 +1,10 @@
 FROM continuumio/anaconda3:latest
 
-RUN conda create -n fastai python=3.6 &&\
-    echo "source activate fastai" >> /root/.bashrc
+RUN conda create -n fastai-env python=3.6 &&\
+    echo "source activate fastai-env" >> /root/.bashrc
 
-RUN conda install conda \
-    && conda install -c pytorch -c fastai fastai pytorch \
+RUN conda install -n fastai-env conda \
+    && conda install -n fastai-env -c pytorch -c fastai fastai pytorch \
     && git clone https://github.com/fastai/course-v3 /home/fastai_course \
     && mkdir /home/mydata
 
