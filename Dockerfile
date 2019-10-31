@@ -5,6 +5,7 @@ RUN conda create -n fastai-env python=3.6 &&\
 
 RUN conda install -n fastai-env conda \
     && conda install -n fastai-env -c pytorch -c fastai fastai pytorch \
+    && conda install jupyter\
     && git clone https://github.com/fastai/course-v3 /home/fastai_course \
     && mkdir /home/mydata
 
