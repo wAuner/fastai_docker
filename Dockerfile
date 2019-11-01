@@ -1,17 +1,13 @@
-FROM continuumio/anaconda3:latest
+FROM pytorch/pytorch:1.3-cuda10.1-cudnn7-runtime
 
-RUN conda create -n fastai-env python=3.6 \
-    && echo "source activate fastai-env" >> /root/.bashrc
-
-RUN conda install -n fastai-env conda jupyter \
-    && conda install -n fastai-env -c pytorch -c fastai fastai pytorch \
-    && git clone https://github.com/fastai/course-v3 /home/fastai_course \
-    && mkdir /home/mydata
+RUN conda install jupyter \
+    && conda install -c fastai fastai \
+    && git clone https://github.com/fastai/course-v3 /workspace \
 
 SHELL ["/bin/bash"]
 CMD jupyter notebook \
     --no-browser \
     --port=8888 \
     --ip='*' \
-    --notebook-dir=/home \
+    --notebook-dir=/workspace \
     --allow-root
