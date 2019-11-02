@@ -4,7 +4,7 @@ RUN conda install jupyter \
     && conda install -c fastai fastai 
 RUN git clone https://github.com/fastai/course-v3 /workspace/fastai_course
 
-SHELL ["/bin/bash"]
+SHELL ["/bin/bash", "-c"]
 CMD jupyter notebook \
     --no-browser \
     --port=8888 \
